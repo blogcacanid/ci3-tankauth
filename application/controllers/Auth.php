@@ -9,8 +9,7 @@ class Auth extends CI_Controller
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->load->helper('security');
-//		$this->load->library('tank_auth');
-                $this->load->library('tank_auth_groups','','tank_auth');
+		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');
 	}
 
@@ -85,6 +84,7 @@ class Auth extends CI_Controller
 				}
 			}
 			$data['show_captcha'] = FALSE;
+//			$data['show_captcha'] = TRUE;
 			if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
 				$data['show_captcha'] = TRUE;
 				if ($data['use_recaptcha']) {
